@@ -1,13 +1,13 @@
 # Javascript Node CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
-# martand test
+#
 version: 2
 jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.9.1
+      - image: circleci/node:7.10
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - checkout
-     
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -33,6 +33,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-    - add_ssh_keys:
-      fingerprints:
-        - "SHA256:Ibs+QbZaEVcQEEruV/f+k5e/QygFtKplqcSnDUxafbM"
+      # run tests!
+      - run: yarn test
+
+
