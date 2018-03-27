@@ -1,13 +1,15 @@
-var http = require('http'); //add the http module
+var http = require("http");
 
-//Create a server
-var myServer = http.createServer(function (request, response) {
-  // Return something from server
-  response.writeHead(200, {"Content-Type": "text/plain"});
-  response.end("Hello Node\n");
-}); //create a server
+http.createServer(function (request, response) {
 
-Bind server to a port
-myServer.listen(3000);
+   // Send the HTTP header 
+   // HTTP Status: 200 : OK
+   // Content Type: text/plain
+   response.writeHead(200, {'Content-Type': 'text/plain'});
+   
+   // Send the response body as "Hello World"
+   response.end('Hello World\n');
+}).listen(8081);
 
-console.log("Go to localhost:3000 on your browser");
+// Console will print the message
+console.log('Server running at http://127.0.0.1:8081/');
